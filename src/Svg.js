@@ -7,7 +7,6 @@ const Svg = ({
     width,
     height,
 }) => {
-    console.log('points: ', points)
     return (
         <svg
             className="Svg"

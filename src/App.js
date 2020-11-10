@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Svg from './Svg';
 import data from './data.json';
 import ImageEditor from './ImageEditor';
+import * as styles from './App.scss';
 
 function App() {
     const [points, setPoints] = useState([]);
