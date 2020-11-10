@@ -1,25 +1,43 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useEffect, useState} from 'react';
+import Svg from './Svg';
+import data from './data.json';
+import ImageEditor from './ImageEditor';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [points, setPoints] = useState([]);
+    const [polygon, setPolygon] = useState({});
+    const [image, setImage] = useState(null);
+
+    useEffect(() => {
+        onLoad();
+    }, []);
+
+    async function onLoad() {
+        const dataset = data.reduce((acc, item) => {
+            const { x, y } = item;
+            acc.push([x, y]);
+            return acc;
+        }, []);
+
+        setPoints(dataset);
+        setPolygon({
+            vertices: data.length,
+            circleRadius: 0.1,
+            size: 100,
+            points: dataset,
+        });
+    }
+    return (
+        <div className="App-wrapper">
+            <ImageEditor onImageUpload={setImage} />
+            {image ? <Svg
+                circleRadius={polygon.circleRadius}
+                points={points}
+                width={polygon.size}
+                height={polygon.size}
+            /> : null}
+        </div>
+    );
 }
 
 export default App;
