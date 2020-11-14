@@ -16,7 +16,7 @@ function beforeUpload(file) {
     return isJpgOrPng;
 }
 
-function ImageEditor(props) {
+export default function ImageEditor(props) {
     const [loading, setLoading] = useState(false);
     const [imageUrl, setImage] = useState(null);
 
@@ -44,6 +44,7 @@ function ImageEditor(props) {
             action="https://www.mocky.io/v2/5cc8019d300000980a055e76"
             beforeUpload={beforeUpload}
             onChange={handleChange}
+            disabled={imageUrl}
         >
             {imageUrl ? (
                 <img src={imageUrl} alt="upload" className="ImageViewer" />
@@ -53,5 +54,3 @@ function ImageEditor(props) {
         </Upload>
     );
 }
-
-export default ImageEditor;

@@ -1,4 +1,4 @@
-const Line = ({ point, radius }) => {
+export const Line = ({ point, radius }) => {
     const centerX = radius / 2;
     const centerY = radius / 2;
     return (
@@ -11,5 +11,3 @@ const Line = ({ point, radius }) => {
         />
     );
 };
-
-export default Line;

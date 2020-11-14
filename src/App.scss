@@ -19,7 +19,7 @@ body {
     display: flex;
 }
 
-.image-editor{
+.image-editor {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -45,11 +45,15 @@ body {
 
 .Svg {
     position: absolute;
-    background: transparent;
-    width: 100vw;
     height: 100%;
+    width: 100%;
+    background: transparent;
 }
 
+.Dot{
+    z-index: 999;
+    position: absolute;
+}
 .polygon {
     fill: none;
     stroke: $primary-color;
@@ -57,7 +61,9 @@ body {
 }
 
 .circle {
-    fill: $bg-color;
+    z-index: 9999;
+    position: absolute;
+    fill: $tertiary-color;
     stroke: $secondary-color;
     stroke-width: 2;
 }
@@ -104,7 +110,7 @@ body {
         border-left: none;
     }
 
-    .Checkbox--checkbox:checked + & {
+    .Checkbox--checkbox:checked+& {
         background: $tertiary-color;
     }
 
@@ -173,8 +179,7 @@ input[type='range'] {
 
     &::-webkit-slider-thumb {
         @include thumb();
-        margin-top: ((-$track-border-width * 2 + $track-height) / 2) -
-            ($thumb-height / 2);
+        margin-top: ((-$track-border-width * 2 + $track-height) / 2) - ($thumb-height / 2);
         transition: all 100ms ease-in-out;
         -webkit-appearance: none;
     }
@@ -234,4 +239,4 @@ input[type='range'] {
     top: 0;
     width: 100%;
     height: 100%;
-  }
+}

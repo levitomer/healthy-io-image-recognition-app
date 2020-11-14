@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from 'react';
-import Svg from './Svg';
+import React, { useEffect, useState } from 'react';
+import Polygon from './Polygon';
 import data from './data.json';
 import ImageEditor from './ImageEditor';
-import * as styles from './App.scss';
+import './App.scss';
 
-function App() {
+export default function App() {
     const [points, setPoints] = useState([]);
     const [polygon, setPolygon] = useState({});
     const [image, setImage] = useState(null);
@@ -23,22 +23,22 @@ function App() {
         setPoints(dataset);
         setPolygon({
             vertices: data.length,
-            circleRadius: 0.1,
             size: 100,
             points: dataset,
         });
     }
+
     return (
         <div className="App-wrapper">
             <ImageEditor onImageUpload={setImage} />
-            {image ? <Svg
-                circleRadius={polygon.circleRadius}
-                points={points}
-                width={polygon.size}
-                height={polygon.size}
-            /> : null}
+            {image ? (
+                <Polygon
+                    circleRadius={polygon.circleRadius}
+                    points={points}
+                    width={polygon.size}
+                    height={polygon.size}
+                />
+            ) : null}
         </div>
     );
 }
-
-export default App;

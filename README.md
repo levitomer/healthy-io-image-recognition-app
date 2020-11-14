@@ -12,7 +12,7 @@ The application loads an image and draws a given polygon coordinates on it.
 
 In the project directory, you can run:
 
-### `npm start`
+### `yarn start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
