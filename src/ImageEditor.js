@@ -47,7 +47,7 @@ export default function ImageEditor(props) {
             disabled={imageUrl}
         >
             {imageUrl ? (
-                <img src={imageUrl} alt="upload" className="ImageViewer" />
+                <img src={imageUrl} alt="upload" className="image" />
             ) : (
                 <UploadButton loading={loading} />
             )}

@@ -1,23 +1,27 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-export default function Edge({ initialPosition }) {
-    const [position, setPosition] = useState({
-        x: initialPosition[0],
-        y: initialPosition[1],
+export default function Edge({ initialPosition, handlePolygonUpdate, index }) {
+    const [edge, setEdge] = useState({
+        X: initialPosition[0],
+        Y: initialPosition[1],
     });
     const [isDragging, setIsDragging] = useState(false);
 
     const handleMouseMove = useCallback(
         ({ clientX, clientY }) => {
             if (isDragging) {
-                setPosition({
-                    x: clientX,
-                    y: clientY,
+                setEdge({
+                    X: clientX,
+                    Y: clientY,
                 });
+                handlePolygonUpdate({
+                    X: clientX,
+                    Y: clientY,
+                }, index)
             }
         },
-        [isDragging]
+        [isDragging, handlePolygonUpdate, index]
     );
 
     const handleMouseUp = useCallback(() => {
@@ -43,8 +47,8 @@ export default function Edge({ initialPosition }) {
     return (
         <circle
             fill="black"
-            cx={position.x}
-            cy={position.y}
+            cx={edge.X}
+            cy={edge.Y}
             r={0.05}
             className="circle"
             onMouseDown={handleMouseDown}
@@ -54,7 +58,7 @@ export default function Edge({ initialPosition }) {
 
 Edge.propTypes = {
     position: PropTypes.shape({
-        x: PropTypes.number,
-        y: PropTypes.number,
+        X: PropTypes.number,
+        Y: PropTypes.number,
     }),
 };
