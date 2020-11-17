@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import Polygon from './Polygon';
-&import dataset from './data.json';
+import dataset from './data.json';
 import ImageEditor from './ImageEditor';
 import './App.scss';
 
